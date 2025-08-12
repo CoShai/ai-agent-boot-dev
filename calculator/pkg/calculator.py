@@ -1,4 +1,4 @@
-import re
+# calculator.py
 
 class Calculator:
     def __init__(self):
@@ -18,8 +18,7 @@ class Calculator:
     def evaluate(self, expression):
         if not expression or expression.isspace():
             return None
-        tokens = re.findall(r"(\d+\.?\d*)|([+\-*/()])", expression)
-        tokens = [t[0] or t[1] for t in tokens]  # Extract the matched token
+        tokens = expression.strip().split()
         return self._evaluate_infix(tokens)
 
     def _evaluate_infix(self, tokens):
